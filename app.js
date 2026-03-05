@@ -48,8 +48,9 @@ function pomoTime(minutes) {
   return Math.floor(minutes / 60) + ':' + String(minutes % 60).padStart(2, '0');
 }
 
-function totalPomo() {
-  return Object.values(PROFILE.pomodoro).reduce((a, b) => a + b, 0);
+// Суммарное время из всех постов
+function totalMinutes() {
+  return POSTS.reduce((a, p) => a + (p.minutes || 0), 0);
 }
 
 // ── ТЕМА ──
@@ -153,7 +154,7 @@ function updateSidebarData() {
 function viewDashboard() {
   const lv  = getLevel(PROFILE.currentXP);
   const pct = Math.round(((PROFILE.currentXP - lv.minXP) / (lv.maxXP - lv.minXP)) * 100);
-  const pomoTotal = totalPomo();
+  const pomoTotal = totalMinutes();
   const pomoDisplay = pomoTime(pomoTotal);
   const unlockedCount = BADGES.filter(b => b.unlocked).length;
 
@@ -237,15 +238,14 @@ function viewDashboard() {
       </div>
       <div class="panel-body">
         <div class="pomo-list">
-          ${Object.entries(PROFILE.pomodoro).map(([k, v], i) => `
           <div class="pomo-row">
-            <div class="pomo-dot ${i === 0 ? 'on' : 'off'}"></div>
+            <div class="pomo-dot on"></div>
             <div class="pomo-info">
-              <div class="pomo-lbl">${k}</div>
-              <div class="pomo-xp">+${i === 0 ? 2 : 1} XP / сессия</div>
+              <div class="pomo-lbl">AI Content</div>
+              <div class="pomo-xp">суммарно за все дни</div>
             </div>
-            <div class="pomo-time ${v === 0 ? 'dim' : ''}">${pomoTime(v)}</div>
-          </div>`).join('')}
+            <div class="pomo-time ${pomoTotal === 0 ? 'dim' : ''}">${pomoTime(pomoTotal)}</div>
+          </div>
         </div>
       </div>
     </div>
@@ -314,12 +314,15 @@ function viewPosts() {
     <div class="empty-txt">Записей пока нет<br>Первая появится скоро</div>
   </div>` : POSTS.slice().reverse().map(post => `
   <div class="post-card">
-    <div class="post-meta">${formatDate(post.date)} // ЗАПИСЬ #${String(post.id).padStart(3,'0')}</div>
+    <div class="post-meta">${formatDate(post.date)} // ЗАПИСЬ #${String(post.id).padStart(3,'0')}${post.minutes ? ' // ⏱ ' + post.minutes + ' МИН' : ''}</div>
     <div class="post-title">${post.title}</div>
     <div class="post-body">${formatContent(post.content)}</div>
     <div class="post-footer">
       <div class="post-tags">${(post.tags || []).map(t => `<span class="tag">#${t}</span>`).join('')}</div>
-      ${post.earnings ? `<span class="tag" style="color:var(--green);border-color:rgba(61,255,160,0.3)">+$${post.earnings}</span>` : ''}
+      <div class="post-stats">
+        ${post.earnings ? `<span class="post-stat-pill earn">+$${post.earnings}</span>` : ''}
+        ${post.videos ? `<span class="post-stat-pill video">🎬 ${post.videos} видео</span>` : ''}
+      </div>
     </div>
   </div>`).join('')}`;
 }
@@ -377,7 +380,7 @@ function viewBadges() {
 }
 
 function viewStats() {
-  const pomoTotal = totalPomo();
+  const pomoTotal = totalMinutes();
 
   return `
   <div class="page-topbar">
@@ -411,7 +414,7 @@ function viewStats() {
       <div class="stat-big-lbl">Опыта набрано</div>
     </div>
     <div class="stat-big">
-      <div class="stat-big-val">${Math.floor(pomoTotal / 60)}ч</div>
+      <div class="stat-big-val">${Math.floor(pomoTotal / 60)}ч ${pomoTotal % 60}м</div>
       <div class="stat-big-lbl">Время в работе</div>
     </div>
     <div class="stat-big">
@@ -422,17 +425,17 @@ function viewStats() {
 
   <div class="panel">
     <div class="panel-head">
-      <span class="panel-ico">🍅</span>
-      <span class="panel-title">Помодоро по направлениям</span>
+      <span class="panel-ico">⏱</span>
+      <span class="panel-title">Время по дням</span>
     </div>
     <div class="panel-body">
       <div class="pomo-list">
-        ${Object.entries(PROFILE.pomodoro).map(([k, v]) => `
+        ${POSTS.slice().reverse().map(p => p.minutes ? `
         <div class="pomo-row">
           <div class="pomo-dot off"></div>
-          <div class="pomo-info"><div class="pomo-lbl">${k}</div></div>
-          <div class="pomo-time ${v === 0 ? 'dim' : ''}">${pomoHours(v)}</div>
-        </div>`).join('')}
+          <div class="pomo-info"><div class="pomo-lbl">${p.title}</div></div>
+          <div class="pomo-time">${pomoHours(p.minutes)}</div>
+        </div>` : '').join('')}
       </div>
     </div>
   </div>`;
