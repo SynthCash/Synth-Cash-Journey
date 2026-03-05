@@ -26,7 +26,7 @@
 }
 
 * { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior:smooth; }
+html { scroll-behavior:smooth; font-size:17px; }
 
 body {
   background: var(--bg);
@@ -34,6 +34,8 @@ body {
   color: var(--text);
   min-height: 100vh;
   overflow-x: hidden;
+  font-size:16px;
+  line-height:1.6;
 }
 
 body::before {
@@ -203,12 +205,12 @@ body::after {
 
 .nav-btn {
   display:flex; align-items:center; gap:12px;
-  width:100%; padding:11px 12px;
+  width:100%; padding:12px 12px;
   background:transparent;
   border:1px solid transparent;
   color:var(--text-dim);
   font-family:'Rajdhani', sans-serif;
-  font-size:14px; font-weight:600;
+  font-size:16px; font-weight:600;
   text-transform:uppercase; letter-spacing:2px;
   cursor:pointer; transition:all 0.2s;
   margin-bottom:4px; text-align:left;
@@ -281,14 +283,14 @@ body::after {
 
 .panel-title {
   font-family:'Rajdhani', sans-serif;
-  font-size:13px; font-weight:700;
+  font-size:16px; font-weight:700;
   color:var(--gold); text-transform:uppercase;
   letter-spacing:4px; flex:1;
 }
 
 .panel-meta {
   font-family:'Press Start 2P', monospace;
-  font-size:7px; color:var(--text-dim);
+  font-size:9px; color:var(--text-dim);
 }
 
 .panel-body { padding:20px; }
@@ -322,18 +324,18 @@ body::after {
 .s-ico { font-size:24px; margin-bottom:8px; display:block; }
 .s-val {
   font-family:'Rajdhani', sans-serif;
-  font-size:28px; font-weight:700; line-height:1; margin-bottom:4px;
+  font-size:32px; font-weight:700; line-height:1; margin-bottom:6px;
 }
 .s-val.green{color:var(--green);text-shadow:0 0 12px rgba(61,255,160,0.3);}
 .s-val.blue {color:var(--blue); text-shadow:0 0 12px rgba(94,184,255,0.3);}
 .s-val.purple{color:var(--purple);text-shadow:0 0 12px rgba(192,132,252,0.3);}
 .s-val.gold {color:var(--gold); text-shadow:0 0 12px rgba(245,200,66,0.3);}
-.s-name { font-size:11px; color:var(--text-dim); text-transform:uppercase; letter-spacing:2px; font-weight:600; }
+.s-name { font-size:13px; color:var(--text-dim); text-transform:uppercase; letter-spacing:1px; font-weight:600; }
 
 /* ── PROGRESS PANEL ── */
 .xp-wrap { margin-bottom:12px; }
 .xp-top { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:6px; }
-.xp-level { font-family:'Rajdhani',sans-serif; font-size:17px; font-weight:700; color:var(--gold); text-transform:uppercase; letter-spacing:2px; }
+.xp-level { font-family:'Rajdhani',sans-serif; font-size:20px; font-weight:700; color:var(--gold); text-transform:uppercase; letter-spacing:2px; }
 .xp-count { font-family:'Press Start 2P',monospace; font-size:8px; color:var(--text-dim); }
 .xp-track { height:8px; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.05); overflow:hidden; }
 .xp-fill { height:100%; background:linear-gradient(90deg,#92400e,var(--gold)); box-shadow:0 0 8px rgba(245,200,66,0.3); transition:width 1.2s ease; }
@@ -358,7 +360,7 @@ body::after {
 .pomo-dot.off { background:var(--text-dim); }
 @keyframes pdot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.6;transform:scale(0.8)} }
 .pomo-info { flex:1; }
-.pomo-lbl { font-size:13px; font-weight:600; color:var(--text); }
+.pomo-lbl { font-size:15px; font-weight:600; color:var(--text); }
 .pomo-xp { font-family:'Press Start 2P',monospace; font-size:6px; color:var(--green); margin-top:3px; }
 .pomo-time { font-family:'Rajdhani',monospace; font-size:20px; font-weight:700; color:var(--gold); }
 .pomo-time.dim { color:var(--text-dim); }
@@ -395,8 +397,8 @@ body::after {
 .rarity-tag.legend  { color:var(--gold); }
 
 .ach-ico { font-size:30px; margin:8px 0 10px; display:block; line-height:1; }
-.ach-name { font-family:'Rajdhani',sans-serif; font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--text); margin-bottom:3px; line-height:1.2; }
-.ach-desc { font-size:10px; color:var(--text-dim); line-height:1.4; }
+.ach-name { font-family:'Rajdhani',sans-serif; font-size:15px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--text); margin-bottom:4px; line-height:1.2; }
+.ach-desc { font-size:12px; color:var(--text-dim); line-height:1.4; }
 .ach-date { font-family:'Press Start 2P',monospace; font-size:5px; color:var(--green); margin-top:6px; }
 
 /* ── POSTS ── */
@@ -408,10 +410,10 @@ body::after {
 .post-card::before { content:''; position:absolute; top:0; left:0; width:3px; height:100%; background:linear-gradient(180deg,var(--gold),transparent); }
 .post-card:hover { border-color:rgba(245,200,66,0.2); }
 
-.post-meta { font-family:'Press Start 2P',monospace; font-size:8px; color:var(--text-dim); letter-spacing:1px; margin-bottom:8px; }
-.post-title { font-family:'Rajdhani',sans-serif; font-size:19px; font-weight:700; color:var(--text); margin-bottom:10px; cursor:pointer; transition:color 0.2s; }
+.post-meta { font-family:'Press Start 2P',monospace; font-size:9px; color:var(--text-dim); letter-spacing:1px; margin-bottom:10px; }
+.post-title { font-family:'Rajdhani',sans-serif; font-size:22px; font-weight:700; color:var(--text); margin-bottom:10px; cursor:pointer; transition:color 0.2s; }
 .post-title:hover { color:var(--gold); }
-.post-body { font-size:14px; line-height:1.7; color:rgba(226,223,245,0.65); margin-bottom:14px; }
+.post-body { font-size:16px; line-height:1.8; color:rgba(226,223,245,0.75); margin-bottom:14px; }
 .post-footer { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; }
 .post-tags { display:flex; gap:6px; flex-wrap:wrap; }
 .tag {
@@ -458,8 +460,8 @@ body::after {
   padding:24px 20px; text-align:center; position:relative;
 }
 .stat-big::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--gold),var(--gold2)); }
-.stat-big-val { font-family:'Rajdhani',sans-serif; font-size:36px; font-weight:700; color:var(--gold); text-shadow:0 0 12px rgba(245,200,66,0.3); margin-bottom:4px; }
-.stat-big-lbl { font-size:11px; color:var(--text-dim); text-transform:uppercase; letter-spacing:2px; }
+.stat-big-val { font-family:'Rajdhani',sans-serif; font-size:40px; font-weight:700; color:var(--gold); text-shadow:0 0 12px rgba(245,200,66,0.3); margin-bottom:4px; }
+.stat-big-lbl { font-size:13px; color:var(--text-dim); text-transform:uppercase; letter-spacing:1px; }
 
 /* ── MODAL ── */
 .modal-overlay {
@@ -625,10 +627,6 @@ body::after {
       Статистика
     </button>
 
-    <button class="nav-btn" id="nav-create" onclick="navigate('create')">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-      Новая запись
-    </button>
   </nav>
 
   <div class="sidebar-footer">
@@ -665,7 +663,7 @@ const DATA = {
     monthlyEarnings: 0,
     videos: 0,
     views: 0,
-    joinDate: new Date().toISOString().split('T')[0],
+    joinDate: '2025-01-01', // Дата запуска сайта — менять здесь
   },
   levels: [
     { level:1, name:'Rookie Creator',       minXP:0,     maxXP:1000  },
@@ -738,7 +736,6 @@ function renderView() {
     case 'posts':     div.innerHTML = viewPosts();     break;
     case 'badges':    div.innerHTML = viewBadges();    break;
     case 'stats':     div.innerHTML = viewStats();     break;
-    case 'create':    div.innerHTML = viewCreate();    break;
   }
   el.appendChild(div);
 }
@@ -857,7 +854,7 @@ function viewPosts() {
   return `
   <div class="topbar">
     <div class="page-title">Журнал квестов</div>
-    <button class="form-btn" style="padding:10px 20px;font-size:12px;" onclick="navigate('create')">+ Новая запись</button>
+
   </div>
   ${DATA.posts.length === 0 ? `
   <div class="empty-state">
@@ -925,7 +922,6 @@ function viewStats() {
     <div class="stat-big"><div class="stat-big-val">$${p.totalEarnings}</div><div class="stat-big-lbl">Всего заработано</div></div>
     <div class="stat-big"><div class="stat-big-val">$${p.monthlyEarnings}</div><div class="stat-big-lbl">Этот месяц</div></div>
     <div class="stat-big"><div class="stat-big-val">${p.videos}</div><div class="stat-big-lbl">Видео загружено</div></div>
-    <div class="stat-big"><div class="stat-big-val">${p.views}</div><div class="stat-big-lbl">Просмотров</div></div>
     <div class="stat-big"><div class="stat-big-val">${DATA.posts.length}</div><div class="stat-big-lbl">Записей в журнале</div></div>
     <div class="stat-big"><div class="stat-big-val">${Math.floor(pomoTotal/60)}ч ${pomoTotal%60}м</div><div class="stat-big-lbl">Время в работе</div></div>
     <div class="stat-big"><div class="stat-big-val">${p.currentXP}</div><div class="stat-big-lbl">Опыта набрано</div></div>
@@ -946,53 +942,7 @@ function viewStats() {
   </div>`;
 }
 
-function viewCreate() {
-  return `
-  <div class="topbar">
-    <div class="page-title">Новая запись</div>
-  </div>
-  <div class="panel">
-    <div class="panel-head"><span>✏️</span><span class="panel-title">Журнал квестов</span></div>
-    <div class="panel-body">
-      <div class="form-group">
-        <label class="form-label">Заголовок</label>
-        <input type="text" class="form-input" id="postTitle" placeholder="День X: ...">
-      </div>
-      <div class="form-group">
-        <label class="form-label">Запись</label>
-        <textarea class="form-textarea" id="postContent" placeholder="Что происходило сегодня..."></textarea>
-      </div>
-      <div class="form-group">
-        <label class="form-label">Теги (через запятую)</label>
-        <input type="text" class="form-input" id="postTags" placeholder="старт, аналитика, победа">
-      </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-        <div class="form-group">
-          <label class="form-label">+$$ Заработано сегодня</label>
-          <input type="number" class="form-input" id="postEarnings" placeholder="0" min="0">
-        </div>
-        <div class="form-group">
-          <label class="form-label">Видео загружено сегодня</label>
-          <input type="number" class="form-input" id="postVideos" placeholder="0" min="0">
-        </div>
-      </div>
-      <div style="display:flex;gap:12px;flex-wrap:wrap;">
-        <button class="form-btn" onclick="savePost()">Сохранить запись</button>
-        <button class="form-btn" style="background:transparent;border:1px solid var(--border-soft);color:var(--text-dim);" onclick="navigate('posts')">Отмена</button>
-      </div>
-    </div>
-  </div>`;
-}
 
-// Save post
-function savePost() {
-  const title = document.getElementById('postTitle').value.trim();
-  const content = document.getElementById('postContent').value.trim();
-  const tagsRaw = document.getElementById('postTags').value.trim();
-  const earnings = parseFloat(document.getElementById('postEarnings').value) || 0;
-  const videos = parseInt(document.getElementById('postVideos').value) || 0;
-
-  if (!title || !content) { alert('Заполни заголовок и текст!'); return; }
 
   const post = {
     id: DATA.posts.length + 1,
