@@ -232,8 +232,8 @@ function viewDashboard() {
   <div class="two-col">
     <div class="panel">
       <div class="panel-head">
-        <span class="panel-ico">🍅</span>
-        <span class="panel-title">Время в бою</span>
+        <span class="panel-ico">⏱</span>
+        <span class="panel-title">Часы в работе</span>
         <span class="panel-meta" style="color:var(--red)">● LIVE</span>
       </div>
       <div class="panel-body">
