@@ -155,7 +155,9 @@ function viewDashboard() {
   const lv  = getLevel(PROFILE.currentXP);
   const pct = Math.round(((PROFILE.currentXP - lv.minXP) / (lv.maxXP - lv.minXP)) * 100);
   const pomoTotal = totalMinutes();
-  const pomoDisplay = pomoTime(pomoTotal) / 25;
+  const pomodoros = Math.floor(pomoTotal / 25);
+  const pomoDisplay = '🍅 ' + pomodoros;
+  const pomoMinutes = pomoTotal + ' мин';
   const unlockedCount = BADGES.filter(b => b.unlocked).length;
 
   const nextLevels = LEVELS.slice(lv.level).slice(0, 3);
