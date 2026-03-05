@@ -227,6 +227,7 @@ function viewDashboard() {
       <span class="s-ico">🍅</span>
       <div class="s-val gold">${pomoDisplay}</div>
       <div class="s-name">Помодоро</div>
+      <div style="font-size:12px;color:var(--text-dim);margin-top:4px">${pomoMinutes}</div>
     </div>
   </div>
 
