@@ -122,7 +122,7 @@ body::after {
 
 /* ── LAYOUT ── */
 .app {
-  position: relative; z-index: 30;
+  position: relative; z-index: 80;
   display: grid;
   grid-template-rows: auto 1fr;
   min-height: 100vh;
