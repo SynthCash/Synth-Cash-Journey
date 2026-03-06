@@ -410,7 +410,7 @@ body::after {
 
 .bar-lbl {
   font-family: 'Press Start 2P', monospace;
-  font-size: 11px; width: 52px; flex-shrink: 0;
+  font-size: 11px; width: 62px; flex-shrink: 0;
 }
 .bar-lbl.hp { color: var(--red); }
 .bar-lbl.fp { color: var(--blue); }
