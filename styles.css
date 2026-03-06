@@ -440,7 +440,7 @@ body::after {
 .bar-val {
   font-family: 'Press Start 2P', monospace;
   font-size: 11px; color: var(--text-dim);
-  width: 68px; text-align: right; flex-shrink: 0;
+  width: 80px; text-align: right; flex-shrink: 0;
 }
 
 /* Char right — rank */
