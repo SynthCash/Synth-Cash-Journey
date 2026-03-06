@@ -156,7 +156,7 @@ function viewDashboard() {
   const pct = Math.round(((PROFILE.currentXP - lv.minXP) / (lv.maxXP - lv.minXP)) * 100);
   const pomoTotal = totalMinutes();
   const pomodoros = Math.floor(pomoTotal / 25);
-  const pomoDisplay = '🍅 ' + pomodoros;
+  const pomoDisplay = pomodoros;
   const pomoMinutes = pomoTotal + ' мин';
   const unlockedCount = BADGES.filter(b => b.unlocked).length;
 
@@ -227,7 +227,7 @@ function viewDashboard() {
       <span class="s-ico">🍅</span>
       <div class="s-val gold">${pomoDisplay}</div>
       <div class="s-name">Помодоро</div>
-      <div style="font-size:12px;color:var(--text-dim);margin-top:4px">${pomoMinutes}</div>
+// <div style="font-size:12px;color:var(--text-dim);margin-top:4px">${pomoMinutes}</div>
     </div>
   </div>
 
