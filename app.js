@@ -17,6 +17,14 @@ function getLevel(xp) {
   return LEVELS.find(l => xp >= l.minXP && xp < l.maxXP) || LEVELS[LEVELS.length - 1];
 }
 
+function calcXP() {
+  const fromPosts    = POSTS.length * 10;
+  const fromPomodoro = Math.floor(totalMinutes() / 25) * 5;
+  const fromBadges   = BADGES.filter(b => b.unlocked)
+                             .reduce((a, b) => a + b.xp, 0);
+  return fromPosts + fromPomodoro + fromBadges;
+}
+
 function getDayCount() {
   const launch = new Date(LAUNCH_DATE);
   const now    = new Date();
@@ -139,8 +147,8 @@ function renderView() {
 
 // ── SIDEBAR данные ──
 function updateSidebarData() {
-  const lv = getLevel(PROFILE.currentXP);
-  const pct = Math.round(((PROFILE.currentXP - lv.minXP) / (lv.maxXP - lv.minXP)) * 100);
+  const lv = getLevel(calcXP());
+  const pct = Math.round(((calcXP() - lv.minXP) / (lv.maxXP - lv.minXP)) * 100);
 
   const el = id => document.getElementById(id);
 
@@ -152,8 +160,8 @@ function updateSidebarData() {
 // ── VIEWS ──
 
 function viewDashboard() {
-  const lv  = getLevel(PROFILE.currentXP);
-  const pct = Math.round(((PROFILE.currentXP - lv.minXP) / (lv.maxXP - lv.minXP)) * 100);
+  const lv  = getLevel(calcXP());
+  const pct = Math.round(((calcXP() - lv.minXP) / (lv.maxXP - lv.minXP)) * 100);
   const pomoTotal = totalMinutes();
   const pomodoros = Math.floor(pomoTotal / 25);
   const pomoDisplay = pomodoros;
@@ -192,7 +200,7 @@ function viewDashboard() {
         <div class="bar-row">
           <div class="bar-lbl xp">XP</div>
           <div class="bar-track"><div class="bar-fill xp" style="width:${pct}%"></div></div>
-          <div class="bar-val">${PROFILE.currentXP}/${lv.maxXP}</div>
+          <div class="bar-val">${calcXP()}/${lv.maxXP}</div>
         </div>
       </div>
     </div>
@@ -261,12 +269,12 @@ function viewDashboard() {
         <div style="margin-bottom:16px">
           <div class="xp-top">
             <div class="xp-level">${lv.name}</div>
-            <div class="xp-count">${PROFILE.currentXP} / ${lv.maxXP}</div>
+            <div class="xp-count">${calcXP()} / ${lv.maxXP}</div>
           </div>
           <div class="xp-track">
             <div class="xp-fill" style="width:${pct}%"></div>
           </div>
-          <div class="xp-sub">До Lv.${lv.level + 1} — ещё ${lv.maxXP - PROFILE.currentXP} XP</div>
+          <div class="xp-sub">До Lv.${lv.level + 1} — ещё ${lv.maxXP - calcXP()} XP</div>
         </div>
         <div class="levels-list">
           ${nextLevels.map(l => `
@@ -412,7 +420,7 @@ function viewStats() {
       <div class="stat-big-lbl">Дней в пути</div>
     </div>
     <div class="stat-big">
-      <div class="stat-big-val">${PROFILE.currentXP}</div>
+      <div class="stat-big-val">${calcXP()}</div>
       <div class="stat-big-lbl">Опыта набрано</div>
     </div>
     <div class="stat-big">
