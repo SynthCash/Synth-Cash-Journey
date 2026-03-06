@@ -334,7 +334,7 @@ body::after {
   padding: 24px 28px;
   margin-bottom: 20px;
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: auto 1fr 120px;
   gap: 24px;
   align-items: center;
   position: relative;
