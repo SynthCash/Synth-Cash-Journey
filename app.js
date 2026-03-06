@@ -247,7 +247,7 @@ function viewDashboard() {
               <div class="pomo-lbl">AI Content</div>
               <div class="pomo-xp">суммарно за все дни</div>
             </div>
-            <div class="pomo-time ${pomoTotal === 0 ? 'dim' : ''}">${pomoTime(pomoTotal)}</div>
+            <div class="pomo-time ${pomoTotal === 0 ? 'dim' : ''}">${pomoTime(pomoTotal)} ч</div>
           </div>
         </div>
       </div>
