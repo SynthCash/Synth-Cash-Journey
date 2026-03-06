@@ -19,93 +19,166 @@ const PROFILE = {
 
 // Бейджи — меняй unlocked: true когда достиг
 const BADGES = [
+  // COMMON
   {
     id: 'first-blood',
-    ico: '🔥',
-    name: 'First Blood',
+    ico: '🔥', name: 'First Blood',
     desc: 'Создан аккаунт и начат путь',
     cond: 'Зарегистрироваться на платформе',
-    rarity: 'common',
-    xp: 50,
-    unlocked: true,
-    date: 'День 1'
+    rarity: 'common', xp: 50, unlocked: true, date: 'День 1'
   },
   {
     id: 'first-session',
-    ico: '🍅',
-    name: 'First Session',
+    ico: '🍅', name: 'First Session',
     desc: 'Первый помодоро на проекте',
     cond: 'Запустить первую рабочую сессию',
-    rarity: 'common',
-    xp: 50,
-    unlocked: true,
-    date: 'День 1'
+    rarity: 'common', xp: 50, unlocked: true, date: 'День 1'
+  },
+  {
+    id: 'rabbit-hole',
+    ico: '🔍', name: 'Rabbit Hole',
+    desc: 'Провёл ночь за исследованием AI',
+    cond: 'Первая запись в журнале',
+    rarity: 'common', xp: 50, unlocked: true, date: 'День 1'
+  },
+  {
+    id: 'director-cut',
+    ico: '🎬', name: "Director's Cut",
+    desc: 'Первое видео создано и сохранено',
+    cond: 'Создать первое видео',
+    rarity: 'common', xp: 75, unlocked: true, date: 'День 1'
+  },
+
+  // RARE
+  {
+    id: 'rejected',
+    ico: '❌', name: 'Rejected',
+    desc: 'Первый дизапрув на PH — слишком реалистично',
+    cond: 'Получить первый отказ',
+    rarity: 'rare', xp: 100, unlocked: true, date: 'День 10'
+  },
+  {
+    id: 'platform-hunter',
+    ico: '🌍', name: 'Platform Hunter',
+    desc: 'Облазил Fansly, Fanvue, Boosty и всё равно выбрал PH',
+    cond: 'Попробовать 3+ платформы',
+    rarity: 'rare', xp: 100, unlocked: true, date: 'День 6'
+  },
+  {
+    id: 'crypto-wallet',
+    ico: '💳', name: 'Crypto Wallet',
+    desc: 'Настроил крипто-вывод — теперь деньги идут куда надо',
+    cond: 'Создать кошелёк для выплат',
+    rarity: 'rare', xp: 100, unlocked: true, date: 'День 3'
+  },
+  {
+    id: 'sound-design',
+    ico: '🎵', name: 'Sound Design',
+    desc: 'Добавил звук через ElevenLabs — немое видео это прошлый век',
+    cond: 'Сгенерировать звук для видео',
+    rarity: 'rare', xp: 100, unlocked: true, date: 'День 3'
+  },
+  {
+    id: 'stack-found',
+    ico: '⚙️', name: 'Stack Found',
+    desc: 'Нашёл связку Grok + a2e.ai — конвейер запущен',
+    cond: 'Найти рабочий стек инструментов',
+    rarity: 'rare', xp: 100, unlocked: true, date: 'День 1'
+  },
+  {
+    id: 'goes-local',
+    ico: '🖥️', name: 'Goes Local',
+    desc: 'Поднял локальный AI-стек — больше не зависишь от чужих лимитов',
+    cond: 'Запустить локальный генератор',
+    rarity: 'rare', xp: 100, unlocked: true, date: 'День 11'
   },
   {
     id: 'first-upload',
-    ico: '🎬',
-    name: 'First Upload',
+    ico: '📤', name: 'First Upload',
     desc: 'Первое видео загружено на PH',
-    cond: 'Загрузить 1 видео на платформу',
-    rarity: 'rare',
-    xp: 100,
-    unlocked: false,
-    date: null
+    cond: 'Загрузить видео на платформу',
+    rarity: 'rare', xp: 100, unlocked: false, date: null
+  },
+
+  // EPIC
+  {
+    id: '3d-conversion',
+    ico: '🤖', name: '3D Conversion',
+    desc: 'Переделал видео в 3D чтобы обойти модерацию',
+    cond: 'Загрузить видео в 3D стиле',
+    rarity: 'epic', xp: 250, unlocked: false, date: null
   },
   {
-    id: 'first-dollar',
-    ico: '💰',
-    name: 'First Dollar',
-    desc: 'Первый заработанный доллар',
-    cond: 'Заработать $1',
-    rarity: 'rare',
-    xp: 100,
-    unlocked: false,
-    date: null
+    id: 'wait-1-5-month',
+    ico: '⏳', name: 'Please Wait',
+    desc: 'Ждал одобрения PH полтора месяца и не сдался',
+    cond: 'Получить одобрение после долгого ожидания',
+    rarity: 'epic', xp: 250, unlocked: true, date: 'День 10'
   },
   {
-    id: 'viral-spark',
-    ico: '👁️',
-    name: 'Viral Spark',
-    desc: '1000 просмотров на одном видео',
-    cond: 'Набрать 1000 просмотров',
-    rarity: 'rare',
-    xp: 150,
-    unlocked: false,
-    date: null
+    id: 'comfyui-installed',
+    ico: '🧩', name: 'ComfyUI Installed',
+    desc: 'Запустил ComfyUI локально — добро пожаловать в кроличью нору',
+    cond: 'Установить и запустить ComfyUI',
+    rarity: 'epic', xp: 250, unlocked: true, date: 'День 11'
+  },
+  {
+    id: 'two-headed-monster',
+    ico: '👾', name: 'Two-Headed Monster',
+    desc: 'Первая генерация получилась полным провалом — и это нормально',
+    cond: 'Получить первый кривой результат в ComfyUI',
+    rarity: 'epic', xp: 250, unlocked: true, date: 'День 11'
+  },
+  {
+    id: 'first-decent-gen',
+    ico: '🎨', name: 'First Decent Gen',
+    desc: 'Первая генерация в ComfyUI, на которую не стыдно смотреть',
+    cond: 'Сгенерировать нормальный результат в ComfyUI',
+    rarity: 'epic', xp: 250, unlocked: false, date: null
+  },
+  {
+    id: 'side-quest-master',
+    ico: '🛠️', name: 'Side Quest Master',
+    desc: 'Сделал локальный сайт с йогой пока ждал другие проекты',
+    cond: 'Завершить побочный проект',
+    rarity: 'epic', xp: 250, unlocked: true, date: 'День 8'
+  },
+  {
+    id: 'first-cents',
+    ico: '💵', name: 'First $0.85',
+    desc: 'Первые деньги с PH — машина работает',
+    cond: 'Заработать $0.85',
+    rarity: 'epic', xp: 300, unlocked: false, date: null
   },
   {
     id: 'hustle-mode',
-    ico: '🚀',
-    name: 'Hustle Mode',
-    desc: 'Заработано $100',
-    cond: 'Заработать $100 суммарно',
-    rarity: 'epic',
-    xp: 250,
-    unlocked: false,
-    date: null
+    ico: '🚀', name: 'Hustle Mode',
+    desc: '$100 заработано суммарно',
+    cond: 'Заработать $100',
+    rarity: 'epic', xp: 250, unlocked: false, date: null
   },
+
+  // LEGENDARY
   {
-    id: 'grind-100h',
-    ico: '⚡',
-    name: '100h Grind',
-    desc: '100 часов в помодоро на проекте',
-    cond: '100 часов суммарного трекинга',
-    rarity: 'epic',
-    xp: 250,
-    unlocked: false,
-    date: null
+    id: 'viral-spark',
+    ico: '👁️', name: 'Viral Spark',
+    desc: 'Видео набрало 10 000 просмотров на PH',
+    cond: 'Набрать 10 000 просмотров на одном видео',
+    rarity: 'legend', xp: 500, unlocked: false, date: null
   },
   {
     id: 'neural-king',
-    ico: '👑',
-    name: 'Neural King',
-    desc: '$1000 в один месяц',
+    ico: '👑', name: 'Neural King',
+    desc: '$1000 в один месяц — машина работает',
     cond: 'Заработать $1000 за календарный месяц',
-    rarity: 'legend',
-    xp: 500,
-    unlocked: false,
-    date: null
+    rarity: 'legend', xp: 500, unlocked: false, date: null
+  },
+  {
+    id: 'the-algorithm',
+    ico: '🏆', name: 'The Algorithm',
+    desc: 'PH начал сам продвигать твои видео',
+    cond: 'Получить органический буст от алгоритма',
+    rarity: 'legend', xp: 500, unlocked: false, date: null
   },
 ];
 
